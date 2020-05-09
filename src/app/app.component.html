@@ -1,0 +1,29 @@
+<h1 class="text-center text-info">{{title}}</h1>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <th> </th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prd of products">
+        <td>
+          <img height="200" (mouseover)="changeImage($event,prd.BackImageUrl)" 
+           (mouseout)="changeImage($event,prd.FrontImageUrl)" width="200" [src]="prd.FrontImageUrl"> 
+        </td>
+        <td>
+          {{prd.ProductName}}
+        </td>
+        <td>
+          {{prd.Price | currency : 'INR'}}  
+        </td>
+        <td [style.color]="prd.Quantity < 100 ? 'red' : 'green'">
+          {{prd.Quantity}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
